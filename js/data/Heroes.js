@@ -68,7 +68,7 @@ class Heroes
     {
         let loadedJson = await Gr.ajaxRequest("GET", "/js/data/heroes.json");
         
-        let toReturn = new Heroes(loadedJson);
+        let toReturn = new Heroes(JSON.parse(loadedJson));
         return toReturn;
     }
 
