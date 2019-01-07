@@ -3,7 +3,7 @@ import { Gr } from "./GrUtils.js";
 
 async function main()
 {
-    let inst = await Heroes.getHeroesData();
+    let inst = await Heroes.loadHeroesData();
 
     Gr.log(inst);
 }

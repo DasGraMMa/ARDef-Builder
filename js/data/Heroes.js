@@ -39,8 +39,16 @@ import { Gr } from "../GrUtils.js";
  * @property {Array.<HeroStatCollection>} stats the stats this Hero can have
  */
 
+/**
+ * The class representing all available Heroes.
+ */
 class Heroes
 {
+    /**
+     * Creates a new Heroes container with the given initial data.
+     * 
+     * @param {Array.<HeroData>} initialData the data to fill the Heroes with
+     */
     constructor(initialData = [])
     {
         /**
@@ -51,13 +59,75 @@ class Heroes
         this.data = initialData;
     }
 
-    static async getHeroesData()
+    /**
+     * Loads the Heroes data and returns an instance with the data already filled in.
+     * 
+     * @returns {Heroes} an instance of Heroes with the whole data filled in
+     */
+    static async loadHeroesData()
     {
         let loadedJson = await Gr.ajaxRequest("GET", "/js/data/heroes.json");
         
-        let toReturn = new self(loadedJson);
+        let toReturn = new Heroes(loadedJson);
         return toReturn;
     }
-}
+
+    /**
+     * Returns a Hero by its unique name.
+     * 
+     * @param {String} name the name of the Hero to return
+     * @returns {HeroData} the Hero's data or `undefined` if none was found
+     */
+    getHero(name)
+    {
+        return this.data.find(heroData => heroData.name == name);
+    }
+
+    /**
+     * Returns multiple Heroes fitting their given unique names.
+     * 
+     * @param {Array.<String>} names the names to return the Heroes for
+     * @returns {Array.<HeroData>} the list of Heroes which fit the given names
+     */
+    getHeroes(names)
+    {
+        return this.data.filter(heroData => names.includes(heroData.name));
+    }
+
+    /**
+     * Returns the plain underlying Heroes data.
+     * 
+     * @returns {Array.<HeroData>} the underlying data
+     */
+    getAllHeroes()
+    {
+        return this.data;
+    }
+
+    /**
+     * Checks whether the given Hero has the given skill within the wanted rarity limit.
+     * 
+     * @param {HeroData} hero the Hero to check for the skill
+     * @param {String} skillName the name of the skill to check for
+     * @param {Number} rarity the highest rarity to check for (5 by default)
+     */
+    static hasSkill(hero, skillName, rarity = 5)
+    {
+        return hero.skills.find(skill => skill.name == skillName && skill.rarity <= rarity) != undefined;
+    }
+
+    /**
+     * Returns all Heroes having the given skill within wanted rarity limit.  
+     * E.g.: `rarity = 4` means skills available at maximum 4 stars, 5-star
+     * skills are ignored
+     * 
+     * @param {String} skillName the name of the skill to find Heroes with
+     * @param {Number} rarity the highest rarity to filter for (5 by default)
+     */
+    findHeroesWithSkill(skillName, rarity = 5)
+    {
+        return this.data.filter(heroData => Heroes.hasSkill(heroData, skillName, rarity));
+    }
+};
 
 export { Heroes };
