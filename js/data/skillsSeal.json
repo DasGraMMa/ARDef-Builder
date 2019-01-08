@@ -93,7 +93,6 @@
         "spCost": 240,
         "icon": "37-2",
         "prev": ["Atk/Spd Bond 2"],
-        "last": true,
         "effect": "Grants Atk/Spd+5 to this unit during combat if unit is adjacent to an ally."
     },
     {
