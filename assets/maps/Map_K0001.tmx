@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="6" height="8" tilewidth="90" tileheight="90" infinite="0" nextlayerid="7" nextobjectid="20">
+ <imagelayer id="2" name="Background" locked="1">
+  <image source="backgrounds/Map_K0001.png" width="540" height="720"/>
+  <properties>
+   <property name="usesLava" type="bool" value="false"/>
+   <property name="usesWater" type="bool" value="true"/>
+  </properties>
+ </imagelayer>
+ <objectgroup id="6" name="MapSpecifics"/>
+ <objectgroup id="5" name="Buildings"/>
+ <objectgroup id="4" name="Units"/>
+</map>
