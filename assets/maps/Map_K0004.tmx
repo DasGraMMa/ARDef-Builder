@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="6" height="8" tilewidth="90" tileheight="90" infinite="0" nextlayerid="7" nextobjectid="29">
+ <tileset firstgid="1" source="tiles/walls4.tsx"/>
+ <imagelayer id="2" name="Background" locked="1">
+  <image source="backgrounds/Map_K0004.png" width="540" height="720"/>
+  <properties>
+   <property name="usesLava" type="bool" value="false"/>
+   <property name="usesWater" type="bool" value="false"/>
+  </properties>
+ </imagelayer>
+ <objectgroup id="6" name="MapSpecifics">
+  <object id="28" gid="10" x="0" y="450" width="90" height="90"/>
+ </objectgroup>
+ <objectgroup id="5" name="Buildings"/>
+ <objectgroup id="4" name="Units"/>
+</map>
