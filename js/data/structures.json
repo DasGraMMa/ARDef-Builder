@@ -1,0 +1,103 @@
+{
+    "offensive":
+    [
+        {
+            "name": "Fortress (O)",
+            "levels": [
+                { "level": 1, "cost": 0, "effect": "If structure's level > opponent's Fortress (D) level, grants Atk/Spd/Def/Res+X to all allies. (X = difference in level × 4).\nNote: Cannot be removed or destroyed." },
+                { "level": 2, "cost": 500, "effect": "If structure's level > opponent's Fortress (D) level, grants Atk/Spd/Def/Res+X to all allies. (X = difference in level × 4).\nNote: Cannot be removed or destroyed." },
+                { "level": 3, "cost": 1000, "effect": "If structure's level > opponent's Fortress (D) level, grants Atk/Spd/Def/Res+X to all allies. (X = difference in level × 4).\nNote: Cannot be removed or destroyed." },
+                { "level": 4, "cost": 1500, "effect": "If structure's level > opponent's Fortress (D) level, grants Atk/Spd/Def/Res+X to all allies. (X = difference in level × 4).\nNote: Cannot be removed or destroyed." },
+                { "level": 5, "cost": 2000, "effect": "If structure's level > opponent's Fortress (D) level, grants Atk/Spd/Def/Res+X to all allies. (X = difference in level × 4).\nNote: Cannot be removed or destroyed." }
+            ],
+            "removable": false,
+            "costType": "dew"
+        },
+        {
+            "name": "Bolt Tower (O)",
+            "levels": [
+                { "level": 1, "cost": 100, "effect": "At the start of turn 3, deals 10 damage to foes within 3 columns centered on structure." },
+                { "level": 2, "cost": 300, "effect": "At the start of turn 3, deals 15 damage to foes within 3 columns centered on structure." },
+                { "level": 3, "cost": 500, "effect": "At the start of turn 3, deals 20 damage to foes within 3 columns centered on structure." }
+            ],
+            "removable": true,
+            "costType": "stones"
+        },
+        {
+            "name": "Tactics Room (O)",
+            "levels": [
+                { "level": 1, "cost": 100, "effect": "At start of turn, if any foes are within the same column as structure and their HP ≤ 40 and they use bow, dagger, magic or staff, restricts those foes' movement to 1 space through their next actions." },
+                { "level": 2, "cost": 300, "effect": "At start of turn, if any foes are within the same column as structure and their HP ≤ 45 and they use bow, dagger, magic or staff, restricts those foes' movement to 1 space through their next actions." },
+                { "level": 3, "cost": 500, "effect": "At start of turn, if any foes are within the same column as structure and their HP ≤ 50 and they use bow, dagger, magic or staff, restricts those foes' movement to 1 space through their next actions." }
+            ],
+            "removable": true,
+            "costType": "stones"
+        }
+    ],
+    "defensive":
+    [
+        {
+            "name": "Fortress (D)",
+            "levels": [
+                { "level": 1, "cost": 0, "effect": "If structure's level > opponent's Fortress (O) level, grants Atk/Spd/Def/Res+X to all allies. (X = difference in level × 4).\nNote: Cannot be removed or destroyed." },
+                { "level": 2, "cost": 500, "effect": "If structure's level > opponent's Fortress (O) level, grants Atk/Spd/Def/Res+X to all allies. (X = difference in level × 4).\nNote: Cannot be removed or destroyed." },
+                { "level": 3, "cost": 1000, "effect": "If structure's level > opponent's Fortress (O) level, grants Atk/Spd/Def/Res+X to all allies. (X = difference in level × 4).\nNote: Cannot be removed or destroyed." },
+                { "level": 4, "cost": 1500, "effect": "If structure's level > opponent's Fortress (O) level, grants Atk/Spd/Def/Res+X to all allies. (X = difference in level × 4).\nNote: Cannot be removed or destroyed." },
+                { "level": 5, "cost": 2000, "effect": "If structure's level > opponent's Fortress (O) level, grants Atk/Spd/Def/Res+X to all allies. (X = difference in level × 4).\nNote: Cannot be removed or destroyed." }
+            ],
+            "removable": false,
+            "costType": "dew"
+        }
+    ],
+    "traps":
+    [
+        {
+            "name": "Bolt Trap",
+            "levels": [
+                { "level": 1, "cost": 0, "effect": "If foe ends movement on this structure's space, deals 10 damage to target and units within 3 spaces. (Cancels foe's attack or Assist skill.)" },
+                { "level": 2, "cost": 100, "effect": "If foe ends movement on this structure's space, deals 20 damage to target and units within 3 spaces. (Cancels foe's attack or Assist skill.)" },
+                { "level": 3, "cost": 300, "effect": "If foe ends movement on this structure's space, deals 30 damage to target and units within 3 spaces. (Cancels foe's attack or Assist skill.)" },
+                { "level": 4, "cost": 500, "effect": "If foe ends movement on this structure's space, deals 40 damage to target and units within 3 spaces. (Cancels foe's attack or Assist skill.)" },
+                { "level": 5, "cost": 700, "effect": "If foe ends movement on this structure's space, deals 50 damage to target and units within 3 spaces. (Cancels foe's attack or Assist skill.)" }
+            ],
+            "removable": true,
+            "costType": "stones"
+        },
+        {
+            "name": "Fake Bolt Trap",
+            "effect": "This looks like a Bolt Trap, but it's just a fake.",
+            "removable": true
+        }
+    ],
+    "ornaments":
+    [
+        {
+            "name": "Feh Statue",
+            "effect": "An objet d'art produced under the direct supervision of its model. It's an event item.",
+            "removable": true
+        }
+    ],
+    "resources":
+    [
+        {
+            "name": "Aether Fountain",
+            "levels": [
+                { "level": 1, "cost": 0, "effect": "Restores 50 Aether to the Aether Keep each day. If destroyed in an attack, it restores Aether to the raiding party (if they win).\nNote: Cannot be removed. Can be destroyed." },
+                { "level": 2, "cost": 100, "effect": "Restores 60 Aether to the Aether Keep each day. If destroyed in an attack, it restores Aether to the raiding party (if they win).\nNote: Cannot be removed. Can be destroyed." },
+                { "level": 3, "cost": 300, "effect": "Restores 70 Aether to the Aether Keep each day. If destroyed in an attack, it restores Aether to the raiding party (if they win).\nNote: Cannot be removed. Can be destroyed." }
+            ],
+            "removable": false,
+            "costType": "dew"
+        },
+        {
+            "name": "Aether Amphorae",
+            "levels": [
+                { "level": 1, "cost": 0, "effect": "Stores up to 100 Aether. If destroyed in an attack, it restores Aether to the raiding party (if they win).\nNote: Cannot be removed. Can be destroyed." },
+                { "level": 2, "cost": 100, "effect": "Stores up to 150 Aether. If destroyed in an attack, it restores Aether to the raiding party (if they win).\nNote: Cannot be removed. Can be destroyed." },
+                { "level": 3, "cost": 300, "effect": "Stores up to 200 Aether. If destroyed in an attack, it restores Aether to the raiding party (if they win).\nNote: Cannot be removed. Can be destroyed." }
+            ],
+            "removable": false,
+            "costType": "dew"
+        }
+    ]
+}
