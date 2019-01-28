@@ -1,77 +1,118 @@
 import { Gr } from "../GrUtils.js";
+import { HeroData, HeroStats } from "./Heroes.js";
 
 /**
- * @typedef {Object} SkillStatChange
- * @property {Number} [hp] the hp change
- * @property {Number} [atk] the attack change
- * @property {Number} [spd] the speed change
- * @property {Number} [def] the defense change
- * @property {Number} [res] the resistance change
+ * Represents a skill restrictor, which checks against certain
+ * properties of the heroes. Has the same structure as the actual HeroData.
  */
+class SkillRestrictor extends HeroData
+{
+    /**
+     * Create a skill restrictor. By default, no restrictions will
+     * be set.
+     */
+    constructor() { super(); }
+}
 
 /**
- * @typedef {Object} SkillRestrictor
+ * Represents the base of all the skill data.
  */
+class SkillData
+{
+    constructor(name, spCost)
+    {
+        /** The unique name of the skill. */
+        this.name = name;
+        
+        /** The SP cost of this skill. */
+        this.spCost = spCost;
 
-/**
- * @typedef {Object} SkillWeapon
- * @property {String} name the name of the weapon skill
- * @property {Number} spCost the SP cost this skill has
- * @property {Number} damage the base damage this weapon has
- * @property {Number} range the range this weapon has
- * @property {String} weaponType the type this weapon belongs to
- * @property {String} [colorType] the type of color this weapon belongs to, if any
- * @property {Array.<String>} [exclusive] the name of the units for which this skill is exclusive
- * @property {Array.<String>} [prev] the skill names of the required skills for this one to be learned
- * @property {SkillStatChange} [stats] the stat change this weapon makes when equipped
- * @property {String} effect the effect this weapon has
- */
+        /** The icon this skill has, if any. Is described as `row-column` on the skill sprite-sheet. */
+        this.icon = "";
 
-/**
- * @typedef {Object} SkillAssist
- * @property {String} name the name of the assist skill
- * @property {Number} spCost the SP cost this skill has
- * @property {Number} range the range of this assist skill
- * @property {Array.<String>} [prev] the skill names of the required skills for this one to be learned
- * @property {Array.<SkillRestrictor>} [include] the filter for Heroes which are allowed to use this skill
- * @property {Array.<SkillRestrictor>} [exclude] the filter for Heroes which are not allowed to use this skill
- * @property {boolean} [last] whether this skill is the last in its sequence
- * @property {String} effect the effect this assist has
- */
+        /** The damage this skill does, if any. */
+        this.damage = 0;
 
-/**
- * @typedef {Object} SkillGeneral
- * @property {String} name the name of the skill
- * @property {Number} spCost the SP cost of this skill
- * @property {String} icon the icon indices of this skill (format: "row-column")
- * @property {Array.<String>} [prev] the skill names of the required skills for this one to be learned
- * @property {Array.<SkillRestrictor>} [include] the filter for Heroes which are allowed to use this skill
- * @property {Array.<SkillRestrictor>} [exclude] the filter for Heroes which are not allowed to use this skill
- * @property {SkillStatChange} [stats] the stat change this skill makes when equipped
- * @property {boolean} [last] whether this skill is the last in its sequence
- * @property {String} effect the effect this assist has
- */
+        /** The range this skill has, if any. */
+        this.range = 0;
 
-/**
- * @typedef {Object} SkillSeal
- * @property {String} name the name of the skill
- * @property {String} icon the icon indices of this skill (format: "row-column")
- * @property {Array.<SkillRestrictor>} [include] the filter for Heroes which are allowed to equip this seal
- * @property {Array.<SkillRestrictor>} [exclude] the filter for Heroes which are not allowed to equip this seal
- * @property {SkillStatChange} [stats] the stat change this skill makes when equipped
- * @property {String} effect the effect this assist has
- */
+        /**
+         * The filters which determine whether a Hero can use this skill. Has to match at least one.
+         * @type {Array.<SkillRestrictor>}
+         */
+        this.include = [];
 
-/**
- * @typedef {Object} SkillHolder
- * @property {Array.<SkillWeapon>} weapons the list of weapon skills
- * @property {Array.<SkillAssist>} assists the list of assist skills
- * @property {Array.<SkillSpecial>} specials the list of special skills
- * @property {Array.<SkillGeneral>} aSkills the list of A skills
- * @property {Array.<SkillGeneral>} bSkills the list of B skills
- * @property {Array.<SkillGeneral>} cSkills the list of C skills
- * @property {Array.<SkillSeal>} seals the list of seals of skills
- */
+        /**
+         * The filters which determine whether a Hero cannot use this skill. Invalid as soon as one matches.
+         * @type {Array.<SkillRestrictor>}
+         */
+        this.exclude = [];
+
+        /**
+         * The skills which serve as a requirement for this one to be learnable. Only one has to be learned.
+         * @type {Array.<String>}
+         */
+        this.prev = [];
+
+        /**
+         * The stat change this skill will cause when equipped. Can increase or decrease stats.
+         */
+        this.stats = new HeroStats(0, 0, 0, 0, 0);
+
+        /**
+         * The effect this skill has. Just a description.
+         */
+        this.effect = "";
+    }
+}
+
+class SkillHolder
+{
+    constructor()
+    {
+        /**
+         * The list of skills which represent weapons.
+         * @type {Array.<SkillData>}
+         */
+        this.weapons = [];
+        
+        /**
+         * The list of skills which represent assist skills.
+         * @type {Array.<SkillData>}
+         */
+        this.assists = [];
+
+        /**
+         * The list of skills which represent specials.
+         * @type {Array.<SkillData>}
+         */
+        this.specials = [];
+        
+        /**
+         * The list of skills which represent A-slot skills.
+         * @type {Array.<SkillData>}
+         */
+        this.aSkills = [];
+        
+        /**
+         * The list of skills which represent B-slot skills.
+         * @type {Array.<SkillData>}
+         */
+        this.bSkills = [];
+        
+        /**
+         * The list of skills which represent C-slot skills.
+         * @type {Array.<SkillData>}
+         */
+        this.cSkills = [];
+        
+        /**
+         * The list of skills which represent seals.
+         * @type {Array.<SkillData>}
+         */
+        this.seals = [];
+    }
+}
 
 /**
  * The class holding all the available skills.
