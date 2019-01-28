@@ -4,8 +4,7 @@
         "spCost": 150,
         "damage": 4,
         "range": 2,
-        "weaponType": "Staff",
-        "colorType": "Neutral",
+        "include": [{ "weaponType": "Staff", "colorType": "Neutral" }],
         "effect": "Recovers HP = 50% of damage dealt."
     },
     {
@@ -13,8 +12,7 @@
         "spCost": 300,
         "damage": 7,
         "range": 2,
-        "weaponType": "Staff",
-        "colorType": "Neutral",
+        "include": [{ "weaponType": "Staff", "colorType": "Neutral" }],
         "prev": ["Absorb"],
         "effect": "Recovers HP = 50% of damage dealt. After combat, restores 7 HP to allies within 2 spaces of unit."
     },
@@ -23,9 +21,7 @@
         "spCost": 400,
         "damage": 16,
         "range": 1,
-        "weaponType": "Sword",
-        "colorType": "Red",
-        "exclusive": ["Black Knight", "Zelgius"],
+        "include": [{ "name": "Black Knight" }, { "name": "Zelgius" }],
         "prev": ["Silver Sword"],
         "effect": "Enables counterattack regardless of distance if this unit is attacked."
     },
@@ -34,11 +30,9 @@
         "spCost": 400,
         "damage": 11,
         "range": 1,
-        "weaponType": "Sword",
-        "colorType": "Red",
+        "include": [{ "name": "Elincia", "weaponType": "Sword", "colorType": "Red" }],
         "stats": {"spd": -2},
         "prev": ["Silver Sword"],
-        "exclusive": ["Elincia"],
         "effect": "Spd-2. Attack twice when initiating combat."
     },
     {
@@ -46,8 +40,7 @@
         "spCost": 200,
         "damage": 10,
         "range": 1,
-        "weaponType": "Axe",
-        "colorType": "Green",
+        "include": [{ "weaponType": "Axe", "colorType": "Green" }],
         "prev": ["Steel Axe"],
         "effect": "At start of turn, if unit is adjacent to an ally, grants Atk+4 to unit and adjacent allies for 1 turn."
     },
@@ -56,8 +49,7 @@
         "spCost": 300,
         "damage": 14,
         "range": 1,
-        "weaponType": "Axe",
-        "colorType": "Green",
+        "include": [{ "weaponType": "Axe", "colorType": "Green" }],
         "prev": ["Ardent Service"],
         "effect": "At start of turn, if unit is adjacent to an ally, grants Atk+4 to unit and adjacent allies for 1 turn."
     },
@@ -66,10 +58,8 @@
         "spCost": 400,
         "damage": 16,
         "range": 1,
-        "weaponType": "Axe",
-        "colorType": "Green",
+        "include": [{ "name": "Hector", "weaponType": "Axe", "colorType": "Green" }],
         "prev": ["Silver Axe"],
-        "exclusive": ["Hector"],
         "effect": "Unit makes a guaranteed follow-up attack when attacked at HP ≥ 80%."
     },
     {
@@ -77,8 +67,7 @@
         "spCost": 200,
         "damage": 8,
         "range": 1,
-        "weaponType": "Sword",
-        "colorType": "Red",
+        "include": [{ "weaponType": "Sword", "colorType": "Red" }],
         "prev": ["Steel Sword"],
         "effect": "Effective against armored units."
     },
@@ -87,8 +76,7 @@
         "spCost": 300,
         "damage": 12,
         "range": 1,
-        "weaponType": "Sword",
-        "colorType": "Red",
+        "include": [{ "weaponType": "Sword", "colorType": "Red" }],
         "prev": ["Armorslayer"],
         "effect": "Effective against armored units."
     },
@@ -97,8 +85,7 @@
         "spCost": 200,
         "damage": 10,
         "range": 1,
-        "weaponType": "Sword",
-        "colorType": "Red",
+        "include": [{ "weaponType": "Sword", "colorType": "Red" }],
         "effect": "Effective against armored units."
     },
     {
@@ -106,8 +93,7 @@
         "spCost": 300,
         "damage": 14,
         "range": 1,
-        "weaponType": "Sword",
-        "colorType": "Red",
+        "include": [{ "weaponType": "Sword", "colorType": "Red" }],
         "prev": ["Armorsmasher"],
         "effect": "Effective against armored foes."
     },
@@ -116,7 +102,7 @@
         "spCost": 200,
         "damage": 7,
         "range": 2,
-        "weaponType": "Bow",
+        "include": [{ "weaponType": "Bow" }],
         "prev": ["Steel Bow"],
         "effect": "Effective against flying units.  If target has a dagger, it can't make a follow-up attack and this unit will."
     },
@@ -125,8 +111,8 @@
         "spCost": 300,
         "damage": 11,
         "range": 2,
-        "weaponType": "Bow",
-        "prev": ["Assasin's Bow"],
+        "include": [{ "weaponType": "Bow" }],
+        "prev": ["Assassin's Bow"],
         "effect": "Effective against flying units.  If target has a dagger, it can't make a follow-up attack and this unit will."
     },
     {
@@ -134,8 +120,7 @@
         "spCost": 50,
         "damage": 10,
         "range": 2,
-        "weaponType": "Staff",
-        "colorType": "Neutral",
+        "include": [{ "weaponType": "Staff", "colorType": "Neutral" }],
         "effect": "-"
     },
     {
@@ -143,11 +128,9 @@
         "spCost": 400,
         "damage": 16,
         "range": 1,
-        "weaponType": "Sword",
-        "colorType": "Red",
+        "include": [{ "name": "Joshua", "weaponType": "Sword", "colorType": "Red" }],
         "stats": {"res": 5},
         "prev": ["Slaying Edge"],
-        "exclusive": ["Joshua"],
         "effect": "Accelerates Special trigger (cooldown count-1). Grants Res+5."
     },
     {
@@ -155,9 +138,7 @@
         "spCost": 400,
         "damage": 14,
         "range": 2,
-        "weaponType": "Tome",
-        "colorType": "Blue",
-        "exclusive": ["Linde"],
+        "include": [{ "name": "Linde", "weaponType": "Tome", "colorType": "Blue" }],
         "prev": ["Thoron"],
         "effect": "Restores 5 HP to adjacent allies after any combat this unit initiates."
     },
@@ -166,10 +147,8 @@
         "spCost": 400,
         "damage": 14,
         "range": 2,
-        "weaponType": "Tome",
-        "colorType": "Red",
+        "include": [{ "name": "Aversa", "weaponType": "Tome", "colorType": "Red" }],
         "prev": ["Fenrir"],
-        "exclusive": ["Aversa"],
         "stats": {"res": 3},
         "effect": "Grants Res+3. At start of turn, if any foe's HP ≤ unit’s HP-3 and that foe is adjacent to another foe, inflicts Atk/Spd/Def/Res-3 on that foe and bonuses on that foe become penalties through its next action."
     },
@@ -178,9 +157,7 @@
         "spCost": 400,
         "damage": 16,
         "range": 1,
-        "weaponType": "Axe",
-        "colorType": "Green",
-        "exclusive": ["Bartre"],
+        "include": [{ "name": "Bartre", "weaponType": "Axe", "colorType": "Green" }],
         "effect": "Effective against armored foes."
     },
     {
@@ -188,10 +165,8 @@
         "spCost": 400,
         "damage": 16,
         "range": 1,
-        "weaponType": "Sword",
-        "colorType": "Red",
+        "include": [{ "name": "Ayra", "weaponType": "Sword", "colorType": "Red" }],
         "stats": {"spd": 3},
-        "exclusive": ["Ayra"],
         "prev": ["Silver Sword"],
         "effect": "Grants Spd+3. If unit's Spd - foe's Spd ≥ 1, gain Special cooldown charge +1 per attack. (If similar skill also used, only highest value applied.)"
     },
@@ -200,7 +175,7 @@
         "spCost": 200,
         "damage": 8,
         "range": 2,
-        "weaponType": "Dagger",
+        "include": [{ "weaponType": "Dagger" }],
         "prev": ["Steel Dagger"],
         "effect": "Accelerates Special trigger (cooldown count-1). After combat, if unit attacked, inflicts Def/Res-5 on target and foes within 2 spaces of target through their next actions."
     },
@@ -209,7 +184,7 @@
         "spCost": 300,
         "damage": 12,
         "range": 2,
-        "weaponType": "Dagger",
+        "include": [{ "weaponType": "Dagger" }],
         "prev": ["Barb Shuriken"],
         "effect": "Accelerates Special trigger (cooldown count-1). After combat, if unit attacked, inflicts Def/Res-7 on target and foes within 2 spaces of target through their next actions."
     },
@@ -218,8 +193,7 @@
         "spCost": 200,
         "damage": 10,
         "range": 1,
-        "weaponType": "Sword",
-        "colorType": "Red",
+        "include": [{ "weaponType": "Sword", "colorType": "Red" }],
         "prev": ["Steel Sword"],
         "effect": "If foe initiates combat, grants Res+7 during combat."
     },
@@ -228,8 +202,7 @@
         "spCost": 300,
         "damage": 14,
         "range": 1,
-        "weaponType": "Sword",
-        "colorType": "Red",
+        "include": [{ "weaponType": "Sword", "colorType": "Red" }],
         "prev": ["Safeguard"],
         "effect": "If foe initiates combat, grants Res+7 during combat."
     },
@@ -238,9 +211,7 @@
         "spCost": 400,
         "damage": 16,
         "range": 1,
-        "weaponType": "Axe",
-        "colorType": "Green",
-        "exclusive": ["Raven", "Linus"],
+        "include": [{ "name": "Raven" }, { "name": "Linus" }],
         "effect": "Accelerates Special trigger (cooldown count -1)."
     },
     {
@@ -248,8 +219,7 @@
         "spCost": 200,
         "damage": 10,
         "range": 1,
-        "weaponType": "Axe",
-        "colorType": "Green",
+        "include": [{ "weaponType": "Axe", "colorType": "Green" }],
         "prev": ["Steel Axe"],
         "effect": "If unit initiates combat, grants Atk/Spd/Def/Res+2 during combat."
     },
@@ -258,8 +228,7 @@
         "spCost": 300,
         "damage": 14,
         "range": 1,
-        "weaponType": "Axe",
-        "colorType": "Green",
+        "include": [{ "weaponType": "Axe", "colorType": "Green" }],
         "prev": ["Beach Banner"],
         "effect": "If unit initiates combat, grants Atk/Spd/Def/Res+2 during combat."
     },
@@ -268,11 +237,9 @@
         "spCost": 400,
         "damage": 16,
         "range": 1,
-        "weaponType": "Sword",
-        "colorType": "Red",
+        "include": [{ "name": "Celica (Fallen Heroes)", "weaponType": "Sword", "colorType": "Red" }],
         "stats": {"def": 3},
         "prev": ["Silver Sword"],
-        "exclusive": ["Celica (Fallen Heroes)"],
         "effect": "Grants Def+3. If unit's HP = 100% at start of combat, grants Atk/Spd/Def/Res+4, but if unit attacked, unit takes 4 damage after combat."
     },
     {
@@ -280,8 +247,7 @@
         "spCost": 200,
         "damage": 10,
         "range": 1,
-        "weaponType": "Lance",
-        "colorType": "Blue",
+        "include": [{ "weaponType": "Lance", "colorType": "Blue" }],
         "prev": ["Steel Lance"],
         "effect": "Grants Res+4 when the unit is under attack."
     },
@@ -290,8 +256,7 @@
         "spCost": 300,
         "damage": 14,
         "range": 1,
-        "weaponType": "Lance",
-        "colorType": "Blue",
+        "include": [{ "weaponType": "Lance", "colorType": "Blue" }],
         "prev": ["Berkut's Lance"],
         "effect": "Grants Res+4 when the unit is under attack."
     },
@@ -300,10 +265,8 @@
         "spCost": 400,
         "damage": 16,
         "range": 1,
-        "weaponType": "Axe",
-        "colorType": "Green",
+        "include": [{ "name": "Hector (Love Abounds)" }, { "name": "Hector" }],
         "prev": ["Silver Axe"],
-        "exclusive": ["Hector (Love Abounds)", "Hector"],
         "effect": "Accelerates Special trigger (cooldown count-1). If unit's HP ≤ 75% and Special triggers by attacking, Special cooldown count-1 at start of turn. Deals +10 damage when Special triggers."
     },
     {
@@ -311,10 +274,8 @@
         "spCost": 400,
         "damage": 16,
         "range": 1,
-        "weaponType": "Sword",
-        "colorType": "Red",
+        "include": [{ "name": "Roy" }],
         "prev": ["Silver Sword"],
-        "exclusive": ["Roy"],
         "effect": "Grants Def/Res+2 when this unit is attacked."
     },
     {
@@ -322,8 +283,7 @@
         "spCost": 200,
         "damage": 9,
         "range": 2,
-        "weaponType": "Tome",
-        "colorType": "Blue",
+        "include": [{ "weaponType": "Tome", "colorType": "Blue" }],
         "prev": ["Elthunder"],
         "effect": "Slows Special trigger (cooldown count+1). Adds total bonuses on unit to damage dealt."
     },
@@ -332,8 +292,7 @@
         "spCost": 300,
         "damage": 13,
         "range": 2,
-        "weaponType": "Tome",
-        "colorType": "Blue",
+        "include": [{ "weaponType": "Tome", "colorType": "Blue" }],
         "prev": ["Blárblade"],
         "effect": "Slows Special trigger (cooldown count+1). Adds total bonuses on unit to damage dealt."
     },
@@ -342,8 +301,7 @@
         "spCost": 200,
         "damage": 6,
         "range": 2,
-        "weaponType": "Tome",
-        "colorType": "Blue",
+        "include": [{ "weaponType": "Tome", "colorType": "Blue" }],
         "prev": ["Elthunder"],
         "effect": "During combat, unit's Atk/Spd/Def/Res boosted by number of adjacent allies x 2."
     },
@@ -352,8 +310,7 @@
         "spCost": 300,
         "damage": 10,
         "range": 2,
-        "weaponType": "Tome",
-        "colorType": "Blue",
+        "include": [{ "weaponType": "Tome", "colorType": "Blue" }],
         "prev": ["Blárowl"],
         "effect": "During combat, unit's Atk/Spd/Def/Res boosted by number of adjacent allies x 2."
     },
@@ -362,8 +319,7 @@
         "spCost": 200,
         "damage": 7,
         "range": 2,
-        "weaponType": "Tome",
-        "colorType": "Blue",
+        "include": [{ "weaponType": "Tome", "colorType": "Blue" }],
         "prev": ["Elthunder"],
         "effect": "Grants weapon advantage vs. colorless foes."
     },
@@ -372,8 +328,7 @@
         "spCost": 300,
         "damage": 11,
         "range": 2,
-        "weaponType": "Tome",
-        "colorType": "Blue",
+        "include": [{ "weaponType": "Tome", "colorType": "Blue" }],
         "prev": ["Blárraven"],
         "effect": "Grants weapon advantage vs. colorless foes."
     },
@@ -382,8 +337,7 @@
         "spCost": 300,
         "damage": 8,
         "range": 2,
-        "weaponType": "Tome",
-        "colorType": "Blue",
+        "include": [{ "weaponType": "Tome", "colorType": "Blue" }],
         "prev": ["Elthunder"],
         "effect": "Grants Def/Res+6 during combat if foe initiates combat and uses bow, dagger, magic, or staff."
     },
@@ -392,8 +346,7 @@
         "spCost": 400,
         "damage": 12,
         "range": 2,
-        "weaponType": "Tome",
-        "colorType": "Blue",
+        "include": [{ "weaponType": "Tome", "colorType": "Blue" }],
         "prev": ["Blárserpent"],
         "effect": "Grants Def/Res+6 during combat if foe initiates combat and uses bow, dagger, magic, or staff."
     },
@@ -402,8 +355,7 @@
         "spCost": 200,
         "damage": 6,
         "range": 2,
-        "weaponType": "Tome",
-        "colorType": "Blue",
+        "include": [{ "weaponType": "Tome", "colorType": "Blue" }],
         "prev": ["Elthunder"],
         "effect": "Effective against cavalry units."
     },
@@ -412,8 +364,7 @@
         "spCost": 300,
         "damage": 10,
         "range": 2,
-        "weaponType": "Tome",
-        "colorType": "Blue",
+        "include": [{ "weaponType": "Tome", "colorType": "Blue" }],
         "prev": ["Blárwolf"],
         "effect": "Effective against cavalry units."
     },
@@ -422,11 +373,9 @@
         "spCost": 400,
         "damage": 16,
         "range": 1,
-        "weaponType": "Sword",
-        "colorType": "Red",
+        "include": [{ "name": "Roy (Brave Heroes)" }, { "name": "Eliwood" }],
         "stats": {"atk": 3},
         "prev": ["Silver Sword"],
-        "exclusive": ["Roy (Brave Heroes)","Eliwood"],
         "effect": "Grants Atk+3. If unit's Atk > foe's, unit gains Special cooldown charge +1. (If using other similar skill, only highest value applied.)"
     },
     {
@@ -434,8 +383,7 @@
         "spCost": 200,
         "damage": 8,
         "range": 2,
-        "weaponType": "Tome",
-        "colorType": "Blue",
+        "include": [{ "weaponType": "Tome", "colorType": "Blue" }],
         "prev": ["Elthunder"],
         "effect": "Grants allies within 2 spaces Def/Res+2 through their next actions after any combat this unit initiates."
     },
@@ -444,8 +392,7 @@
         "spCost": 300,
         "damage": 12,
         "range": 2,
-        "weaponType": "Tome",
-        "colorType": "Blue",
+        "include": [{ "weaponType": "Tome", "colorType": "Blue" }],
         "prev": ["Blessed Bouquet"],
         "effect": "Grants allies within 2 spaces Def/Res+2 through their next actions after any combat this unit initiates."
     },
@@ -454,11 +401,9 @@
         "spCost": 400,
         "damage": 14,
         "range": 1,
-        "weaponType": "Tome",
-        "colorType": "Green",
+        "include": [{ "name": "Gunnthrá" }],
         "stats": {"res": 3},
         "prev": ["Rexcalibur"],
-        "exclusive": ["Gunnthrá"],
         "effect": "Grants Res+3. Grants bonus to unit's Atk equal to total penalties on foe during combat."
     },
     {
@@ -466,8 +411,7 @@
         "spCost": 200,
         "damage": 7,
         "range": 2,
-        "weaponType": "Tome",
-        "colorType": "Blue",
+        "include": [{ "weaponType": "Tome", "colorType": "Blue" }],
         "prev": ["Elthunder"],
         "effect": "If unit initiates attack, unit recovers 4 HP after the battle."
     },
@@ -476,8 +420,7 @@
         "spCost": 300,
         "damage": 11,
         "range": 2,
-        "weaponType": "Tome",
-        "colorType": "Blue",
+        "include": [{ "weaponType": "Tome", "colorType": "Blue" }],
         "prev": ["Blue Egg"],
         "effect": "If unit initiates attack, unit recovers 4 HP after the battle."
     },
@@ -486,8 +429,7 @@
         "spCost": 200,
         "damage": 8,
         "range": 2,
-        "weaponType": "Tome",
-        "colorType": "Blue",
+        "include": [{ "weaponType": "Tome", "colorType": "Blue" }],
         "prev": ["Ellight"],
         "effect": "If foe uses bow, dagger, magic, or staff, neutralizes foe's bonuses (from skills like Fortify, Rally, etc.) during combat."
     },
@@ -496,8 +438,7 @@
         "spCost": 300,
         "damage": 12,
         "range": 2,
-        "weaponType": "Tome",
-        "colorType": "Blue",
+        "include": [{ "weaponType": "Tome", "colorType": "Blue" }],
         "prev": ["Blue Gift"],
         "effect": "If foe uses bow, dagger, magic, or staff, neutralizes foe's bonuses (from skills like Fortify, Rally, etc.) during combat."
     },
@@ -506,8 +447,7 @@
         "spCost": 200,
         "damage": 9,
         "range": 2,
-        "weaponType": "Tome",
-        "colorType": "Red",
+        "include": [{ "weaponType": "Tome", "colorType": "Red" }],
         "prev": ["Elfire"],
         "effect": "-"
     },
@@ -516,8 +456,7 @@
         "spCost": 300,
         "damage": 13,
         "range": 2,
-        "weaponType": "Tome",
-        "colorType": "Red",
+        "include": [{ "weaponType": "Tome", "colorType": "Red" }],
         "prev": ["Bolganone"],
         "effect": "-"
     },
@@ -526,10 +465,8 @@
         "spCost": 400,
         "damage": 14,
         "range": 2,
-        "weaponType": "Tome",
-        "colorType": "Red",
+        "include": [{ "name": "Camilla (Adrift)" }],
         "stats": { "atk": 3 },
-        "exclusive": ["Camilla (Adrift)"],
         "effect": "Grants Atk+3. If unit is adjacent to an ally, inflicts Atk/Spd/Def/Res-4 on foe during combat."
     },
     {
@@ -537,10 +474,8 @@
         "spCost": 400,
         "damage": 14,
         "range": 2,
-        "weaponType": "Tome",
-        "colorType": "Green",
+        "include": [{ "name": "Azura (Adrift)" }],
         "stats": { "spd": 3 },
-        "exclusive": ["Azura (Adrift)"],
         "effect": "Grants Spd+3. If unit is adjacent to an ally, inflicts Atk/Spd/Def/Res-4 on foe during combat."
     },
     {
@@ -548,7 +483,7 @@
         "spCost": 200,
         "damage": 8,
         "range": 2,
-        "weaponType": "Dagger",
+        "include": [{ "weaponType": "Dagger" }],
         "prev": ["Steel Dagger"],
         "effect": "Inflicts Special cooldown charge -1 on foe per attack during combat. (Only highest value applied. Does not stack.) After combat, if unit attacked, inflicts Def/Res-7 on target and foes within 2 spaces of target through their next actions."
     },
@@ -557,7 +492,7 @@
         "spCost": 300,
         "damage": 12,
         "range": 2,
-        "weaponType": "Dagger",
+        "include": [{ "weaponType": "Dagger" }],
         "prev": ["Bottled Juice"],
         "effect": "Inflicts Special cooldown charge -1 on foe per attack during combat. (Only highest value applied. Does not stack.) After combat, if unit attacked, inflicts Def/Res-7 on target and foes within 2 spaces of target through their next actions."
     },
@@ -566,8 +501,7 @@
         "spCost": 200,
         "damage": 5,
         "range": 1,
-        "weaponType": "Axe",
-        "colorType": "Green",
+        "include": [{ "weaponType": "Axe", "colorType": "Green" }],
         "stats": {"spd": -5},
         "prev": ["Steel Axe"],
         "effect": "Spd-5. Attack twice when initiating combat."
@@ -577,8 +511,7 @@
         "spCost": 300,
         "damage": 8,
         "range": 1,
-        "weaponType": "Axe",
-        "colorType": "Green",
+        "include": [{ "weaponType": "Axe", "colorType": "Green" }],
         "stats": {"spd": -5},
         "prev": ["Brave Axe"],
         "effect": "Spd-5. Attack twice when initiating combat."
@@ -734,8 +667,7 @@
         "spCost": 150,
         "damage": 7,
         "range": 2,
-        "weaponType": "Staff",
-        "colorType": "Neutral",
+        "include": [{ "weaponType": "Staff", "colorType": "Neutral" }],
         "effect": "After combat, foe inflicted with status preventing them from counterattacking."
     },
     {
@@ -743,8 +675,7 @@
         "spCost": 300,
         "damage": 11,
         "range": 2,
-        "weaponType": "Staff",
-        "colorType": "Neutral",
+        "include": [{ "weaponType": "Staff", "colorType": "Neutral" }],
         "prev": ["Candlelight"],
         "effect": "After combat, foe and foes within 2 spaces of target inflicted with status preventing counterattack through their next actions."
     },
@@ -1327,8 +1258,7 @@
         "spCost": 150,
         "damage": 5,
         "range": 2,
-        "weaponType": "Staff",
-        "colorType": "Neutral",
+        "include": [{ "weaponType": "Staff", "colorType": "Neutral" }],
         "effect": "After combat, inflicts Atk-6 on targeted foe through its next action."
     },
     {
@@ -1336,8 +1266,7 @@
         "spCost": 300,
         "damage": 12,
         "range": 2,
-        "weaponType": "Staff",
-        "colorType": "Neutral",
+        "include": [{ "weaponType": "Staff", "colorType": "Neutral" }],
         "prev": ["Fear"],
         "effect": "After combat, inflicts Atk-7 on target and foes within 2 spaces through their next actions."
     },
@@ -1549,8 +1478,7 @@
         "spCost": 150,
         "damage": 7,
         "range": 2,
-        "weaponType": "Staff",
-        "colorType": "Neutral",
+        "include": [{ "weaponType": "Staff", "colorType": "Neutral" }],
         "effect": "After combat, if unit attacked, inflicts status on target and foes withing 2 spaces of target preventing counterattacks through their next actions."
     },
     {
@@ -1558,8 +1486,7 @@
         "spCost": 300,
         "damage": 11,
         "range": 2,
-        "weaponType": "Staff",
-        "colorType": "Neutral",
+        "include": [{ "weaponType": "Staff", "colorType": "Neutral" }],
         "prev": ["Flash"],
         "effect": "After combat, if unit attacked, inflicts status on target and foes withing 2 spaces of target preventing counterattacks through their next actions."
     },
@@ -1856,8 +1783,7 @@
         "spCost": 150,
         "damage": 6,
         "range": 2,
-        "weaponType": "Staff",
-        "colorType": "Neutral",
+        "include": [{ "weaponType": "Staff", "colorType": "Neutral" }],
         "effect": "After any combat, prevents foe from moving more than 1 space through its next action."
     },
     {
@@ -1865,8 +1791,7 @@
         "spCost": 300,
         "damage": 10,
         "range": 2,
-        "weaponType": "Staff",
-        "colorType": "Neutral",
+        "include": [{ "weaponType": "Staff", "colorType": "Neutral" }],
         "prev": ["Gravity"],
         "effect": "After combat, prevents target and foes within 1 space of target from moving more than 1 space through their next actions."
     },
@@ -2236,9 +2161,7 @@
         "spCost": 400,
         "damage": 14,
         "range": 2,
-        "weaponType": "Staff",
-        "colorType": "Neutral",
-        "exclusive": ["Veronica (Arrival of the Brave)"],
+        "include": [{ "name": "Veronica (Arrival of the Brave)", "weaponType": "Staff", "colorType": "Neutral" }],
         "effect": "Foe cannot counterattack. After combat, if unit attacked, inflicts Atk/Spd/Def/Res-4 on target and foes within 2 spaces of target through their next actions, and grants Atk/Spd/Def/Res+4 to unit and allies within 2 spaces for 1 turn."
     },
     {
@@ -2334,8 +2257,7 @@
         "spCost": 150,
         "damage": 8,
         "range": 2,
-        "weaponType": "Staff",
-        "colorType": "Neutral",
+        "include": [{ "weaponType": "Staff", "colorType": "Neutral" }],
         "effect": "At start of turn, grants Def/Res+5 to ally with the highest Atk for 1 turn. (Excludes unit.)"
     },
     {
@@ -2343,8 +2265,7 @@
         "spCost": 300,
         "damage": 12,
         "range": 2,
-        "weaponType": "Staff",
-        "colorType": "Neutral",
+        "include": [{ "weaponType": "Staff", "colorType": "Neutral" }],
         "prev": ["Joyous Lantern"],
         "effect": "At start of turn, grants Def/Res+5 to ally with the highest Atk for 1 turn. (Excludes unit.)"
     },
@@ -2583,8 +2504,7 @@
         "spCost": 150,
         "damage": 7,
         "range": 2,
-        "weaponType": "Staff",
-        "colorType": "Neutral",
+        "include": [{ "weaponType": "Staff", "colorType": "Neutral" }],
         "effect": "At start of turn, inflicts Atk/Spd-3 on foe on the enemy team with the highest Def through its next action."
     },
     {
@@ -2592,9 +2512,8 @@
         "spCost": 300,
         "damage": 11,
         "range": 2,
-        "weaponType": "Staff",
-        "colorType": "Neutral",
-        "prev": ["Flash"],
+        "include": [{ "weaponType": "Staff", "colorType": "Neutral" }],
+        "prev": ["Kumade"],
         "effect": "At start of turn, inflicts Atk/Spd-5 on foe on the enemy team with the highest Def through its next action."
     },
     {
@@ -2990,8 +2909,7 @@
         "spCost": 150,
         "damage": 3,
         "range": 2,
-        "weaponType": "Staff",
-        "colorType": "Neutral",
+        "include": [{ "weaponType": "Staff", "colorType": "Neutral" }],
         "effect": "Inflicts 10 damage on targeted foe after combat."
     },
     {
@@ -2999,8 +2917,7 @@
         "spCost": 300,
         "damage": 10,
         "range": 2,
-        "weaponType": "Staff",
-        "colorType": "Neutral",
+        "include": [{ "weaponType": "Staff", "colorType": "Neutral" }],
         "prev": ["Pain"],
         "effect": "Deals 10 damage to target and foes within 2 spaces of target after combat."
     },
@@ -3009,8 +2926,7 @@
         "spCost": 150,
         "damage": 7,
         "range": 2,
-        "weaponType": "Staff",
-        "colorType": "Neutral",
+        "include": [{ "weaponType": "Staff", "colorType": "Neutral" }],
         "effect": "After combat, bonuses on targeted foe become penalties through its next action."
     },
     {
@@ -3018,8 +2934,7 @@
         "spCost": 300,
         "damage": 11,
         "range": 2,
-        "weaponType": "Staff",
-        "colorType": "Neutral",
+        "include": [{ "weaponType": "Staff", "colorType": "Neutral" }],
         "prev": ["Panic"],
         "effect": "After combat, bonuses on target and foes within 2 spaces of target become penalties through their next actions."
     },
@@ -3888,8 +3803,7 @@
         "spCost": 150,
         "damage": 5,
         "range": 2,
-        "weaponType": "Staff",
-        "colorType": "Neutral",
+        "include": [{ "weaponType": "Staff", "colorType": "Neutral" }],
         "effect": "After any combat, inflicts Spd-6 on foe through its next action."
     },
     {
@@ -3897,8 +3811,7 @@
         "spCost": 300,
         "damage": 12,
         "range": 2,
-        "weaponType": "Staff",
-        "colorType": "Neutral",
+        "include": [{ "weaponType": "Staff", "colorType": "Neutral" }],
         "prev": ["Slow"],
         "effect": "After combat, inflicts Spd-7 on target and foes within 2 spaces of target through their next actions."
     },
@@ -4169,10 +4082,8 @@
         "spCost": 400,
         "damage": 14,
         "range": 2,
-        "weaponType": "Staff",
-        "colorType": "Neutral",
+        "include": [{ "name": "Loki", "weaponType": "Staff", "colorType": "Neutral" }],
         "prev": ["Gravity"],
-        "exclusive": ["Loki"],
         "effect": "Damage from staff calculated like other weapons. At start of turn, foes with bow, daggers, magic, or staff in cardinal directions with HP 3 or more lower than unit's can move only 1 space through their next actions."
     },
     {
@@ -4274,8 +4185,7 @@
         "spCost": 150,
         "damage": 8,
         "range": 2,
-        "weaponType": "Staff",
-        "colorType": "Neutral",
+        "include": [{ "weaponType": "Staff", "colorType": "Neutral" }],
         "effect": "After combat, if unit attacked, inflicts the following status on foe through its next action: \"If unit has weapon-triangle advantage, boosts Atk by 20%. If unit has weapon-triangle disadvantage, reduces Atk by 20%.\""
     },
     {
@@ -4283,8 +4193,7 @@
         "spCost": 300,
         "damage": 12,
         "range": 2,
-        "weaponType": "Staff",
-        "colorType": "Neutral",
+        "include": [{ "weaponType": "Staff", "colorType": "Neutral" }],
         "prev": ["Trilemma"],
         "effect": "After combat, if unit attacked, inflicts the following status on foe through its next action: \"If unit has weapon-triangle advantage, boosts Atk by 20%. If unit has weapon-triangle disadvantage, reduces Atk by 20%.\""
     },
@@ -4504,8 +4413,7 @@
         "spCost": 150,
         "damage": 5,
         "range": 2,
-        "weaponType": "Staff",
-        "colorType": "Neutral",
+        "include": [{ "weaponType": "Staff", "colorType": "Neutral" }],
         "effect": "After combat, if unit attacked, resets Special cooldown of target and foes within 2 spaces of target, and inflicts the following status on target and foes within 2 spaces of target through their next actions: \"Inflicts Special cooldown charge -1 per attack during combat. (Only highest value applied. Does not stack.)\" (Neutralizes Special cooldown count reductions after combat, but skills that Accelerate and Slow Special are still effective.)"
     },
     {
@@ -4513,8 +4421,7 @@
         "spCost": 300,
         "damage": 12,
         "range": 2,
-        "weaponType": "Staff",
-        "colorType": "Neutral",
+        "include": [{ "weaponType": "Staff", "colorType": "Neutral" }],
         "prev": ["Witchy Wand"],
         "effect": "After combat, if unit attacked, resets Special cooldown of target and foes within 2 spaces of target, and inflicts the following status on target and foes within 2 spaces of target through their next actions: \"Inflicts Special cooldown charge -1 per attack during combat. (Only highest value applied. Does not stack.)\" (Neutralizes Special cooldown count reductions after combat, but skills that Accelerate and Slow Special are still effective.)"
     },
