@@ -1,43 +1,204 @@
 import { Gr } from "../GrUtils.js";
 
 /**
- * @typedef {Object} HeroSkill
- * @property {String} name the skill name
- * @property {Number} rarity the rarity the skill is available at
+ * The class representing the skill a Hero comes with and at which
+ * rarity it will be unlocked.
  */
+class HeroSkill
+{
+    /**
+     * Creates a new skill for a Hero, referencing the skill with the given name,
+     * being unlocked at the given rarity.
+     * 
+     * @param {String} name the name of the skill
+     * @param {Number} rarity the rarity of the skill
+     */
+    constructor(name, rarity)
+    {
+        /** The name of this skill. */
+        this.name = name;
+
+        /** The rarity it is available at. */
+        this.rarity = rarity;
+    }
+
+    static parse(jsonObj)
+    {
+        return new HeroSkill(jsonObj.name, jsonObj.rarity);
+    }
+}
 
 /**
- * @typedef {Object} HeroStatCollection
- * @property {HeroStats} level1 the stats at 5* Lvl 1
- * @property {HeroStats} level40 the stats at 5* Lvl 40
- * @property {HeroStats} [level1_4] the stats at 4* Lvl 1
- * @property {HeroStats} [level40_4] the stats at 4* Lvl 40
+ * The class representing the possible stats.
  */
+class HeroStats
+{
+    /**
+     * Creates a new stats object with the given stats. If given an
+     * array for a stat, the values correspond to [bane, neutral, boon].
+     * 
+     * @param {Number|Array.<Number>} hp the hp stat
+     * @param {Number|Array.<Number>} atk the attack stat
+     * @param {Number|Array.<Number>} spd the speed stat
+     * @param {Number|Array.<Number>} def the defense stat
+     * @param {Number|Array.<Number>} res the resistance stat
+     */
+    constructor(hp, atk, spd, def, res)
+    {
+        this.hp = hp;
+        this.atk = atk;
+        this.spd = spd;
+        this.def = def;
+        this.res = res;
+    }
+
+    static parse(jsonObj)
+    {
+        let toReturn = new HeroStats();
+
+        for(let curKey of Object.keys(jsonObj))
+        {
+            toReturn[curKey] = jsonObj[curKey];
+        }
+        
+        return toReturn;
+    }
+}
 
 /**
- * @typedef {Object} HeroStats
- * @property {Number|Array.<Number>} hp the hp stat
- * @property {Number|Array.<Number>} atk the attack stat
- * @property {Number|Array.<Number>} spd the speed stat
- * @property {Number|Array.<Number>} def the defense stat
- * @property {Number|Array.<Number>} res the resistance stat
+ * The class representing the stats a specific Hero has.
  */
+class HeroStatsCollection
+{
+    /**
+     * Creates a collection of HeroStats with the base values at 5*Lvl1 and 5*Lvl40.
+     * 
+     * @param {HeroStats} level1 the stats of the Hero at 5*Lvl1
+     * @param {HeroStats} level40 the stats of the Hero at 5*Lvl40
+     */
+    constructor(level1, level40)
+    {
+        /** The Hero's stats at 5*Lvl1. */
+        this.level1 = level1;
+        
+        /** The Hero's stats at 5*Lvl40. */
+        this.level40 = level40;
+
+        /**
+         * The Hero's stats at 4*Lvl1.
+         * @type {HeroStats}
+         */
+        this.level1_4 = null;
+
+        /**
+         * The Hero's stats at 4*Lvl40.
+         * @type {HeroStats}
+         */
+        this.level40_4 = null;
+    }
+
+    static parse(jsonObj)
+    {
+        let toReturn = new HeroStatsCollection();
+
+        for(let curKey of Object.keys(jsonObj))
+        {
+            toReturn[curKey] = HeroStats.parse(jsonObj[curKey]);
+        }
+
+        return toReturn;
+    }
+
+    getIncreaseForMerge(mergeNum)
+    {
+        let mergeStatBoost = new HeroStats(0, 0, 0, 0, 0);
+        let stats = Object.keys(mergeStatBoost);
+
+        stats.sort((stat1, stat2) => this.level1[stat2] - this.level1[stat1]);
+
+        for(let i = 0; i < mergeNum; i++)
+        {
+            mergeStatBoost[stats[(2 * i) % 5]]++;
+            mergeStatBoost[stats[(2 * i + 1) % 5]]++;
+        }
+
+        return mergeStatBoost;
+    }
+}
 
 /**
- * @typedef {Object} HeroData
- * @property {String} name the real, unique name of this Hero
- * @property {String} [shortName] the short name of this Hero, if needed
- * @property {String} title the title of this Hero
- * @property {String} releaseDate the release date of this Hero
- * @property {String} colorType the color type of this Hero
- * @property {String} weaponType the weapon type of this Hero
- * @property {String} moveType the move type of this Hero
- * @property {boolean} [limited] whether this Hero is available on certain occasions only
- * @property {boolean} [ttRewards] whether this Hero is/was available as a Tempest Trial reward
- * @property {boolean} [ghb] whether this Hero is/was available as a GHB unit
- * @property {Array.<HeroSkill>} skills the skills this Hero comes with
- * @property {Array.<HeroStatCollection>} stats the stats this Hero can have
+ * The class representing the data of one specific Hero.
  */
+class HeroData
+{
+    /**
+     * Creates the data for one specific Hero.
+     * 
+     * @param {String} name the unique name of this Hero
+     * @param {String} title the title of this Hero
+     * @param {String} releaseDate the release date of this Hero
+     * @param {String} colorType the color type this Hero has
+     * @param {String} weaponType the weapon type this Hero has
+     * @param {String} moveType the movement type this Hero has
+     * @param {Array.<HeroSkill>} skills the skills this Hero comes with
+     * @param {HeroStatsCollection} stats the stats this Hero has
+     */
+    constructor(name, title, releaseDate, colorType, weaponType, moveType, skills, stats)
+    {
+        /** The unique Name of this Hero. */
+        this.name = name;
+
+        /** The short name of this Hero. Will be displayed instead of `name` if given. */
+        this.shortName = null;
+
+        /** The title of this Hero. */
+        this.title = title;
+
+        /** The release date string of this Hero. */
+        this.releaseDate = releaseDate;
+
+        /** The color type this Hero has. */
+        this.colorType = colorType;
+
+        /** The weapon type this Hero has. */
+        this.weaponType = weaponType;
+
+        /** The move type this Hero has. */
+        this.moveType = moveType;
+
+        /** The skills this Hero comes with. */
+        this.skills = skills;
+
+        /** The stats this Hero has. */
+        this.stats = stats;
+
+        /** Whether this Hero is available on certain occasions only. */
+        this.limited = false;
+
+        /** Whether this Hero was available as a Tempest Trials reward. */
+        this.ttRewards = false;
+
+        /** Whether this Hero is/was a Grand Hero Battle. */
+        this.ghb = false;
+    }
+
+    static parse(jsonObj)
+    {
+        let toReturn = new HeroData();
+
+        for(let curKey of Object.keys(jsonObj))
+        {
+            if(curKey === "skills")
+                toReturn[curKey] = jsonObj[curKey].map(readSkill => HeroSkill.parse(readSkill));
+            else if(curKey === "stats")
+                toReturn[curKey] = HeroStatsCollection.parse(jsonObj[curKey]);
+            else
+                toReturn[curKey] = jsonObj[curKey];
+        }
+
+        return toReturn;
+    }
+}
 
 /**
  * The class representing all available Heroes.
@@ -66,9 +227,27 @@ class Heroes
      */
     static async loadHeroesData()
     {
-        let loadedJson = await Gr.ajaxRequest("GET", "/js/data/heroes.json");
-        
-        let toReturn = new Heroes(JSON.parse(loadedJson));
+        let loadedJsonStr = await Gr.ajaxRequest("GET", "/js/data/heroes.json");
+
+        return Heroes.parse(loadedJsonStr);
+    }
+
+    /**
+     * Parses a given JSON-string and returns a complete Heroes instance.
+     * 
+     * @param {String} jsonStr the json-string to parse
+     */
+    static parse(jsonStr)
+    {
+        const jsonObj = JSON.parse(jsonStr);
+
+        let heroData = [];
+        for(let curLoaded of jsonObj)
+        {
+            heroData.push(HeroData.parse(curLoaded));
+        }
+
+        let toReturn = new Heroes(heroData);
         return toReturn;
     }
 
@@ -130,4 +309,4 @@ class Heroes
     }
 };
 
-export { Heroes };
+export { Heroes, HeroSkill, HeroStats, HeroStatsCollection, HeroData };
