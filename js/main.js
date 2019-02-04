@@ -3,7 +3,7 @@ import { Heroes } from "./data/Heroes.js";
 import { Skills } from "./data/Skills.js";
 import { Structures } from "./data/Structures.js";
 
-async function main()
+(async function()
 {
     let heroes = await Heroes.loadHeroesData();
     Gr.log(heroes);
@@ -13,6 +13,4 @@ async function main()
 
     let structures = await Structures.loadStructureData();
     Gr.log(structures);
-}
-
-main();
+})();

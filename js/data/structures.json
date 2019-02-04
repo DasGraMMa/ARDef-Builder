@@ -252,7 +252,7 @@
             "costType": "stones"
         },
         {
-            "name": "Fake Bolt Trap",
+            "name": "False Bolt Trap",
             "effect": "This looks like a Bolt Trap, but it's just a fake.",
             "removable": true
         },
@@ -269,7 +269,7 @@
             "costType": "stones"
         },
         {
-            "name": "Fake Heavy Trap",
+            "name": "False Heavy Trap",
             "effect": "This looks like a Heavy Trap, but it's just a fake.",
             "removable": true
         }
@@ -322,6 +322,21 @@
         {
             "name": "Fireplace",
             "effect": "If it's cold where you are, this item should help you feel a little bit warmer. It's an event item.",
+            "removable": true
+        },
+        {
+            "name": "Anniversary Arch",
+            "effect": "An arch built to welcome well-wishers during the second anniversary. It's an event item.",
+            "removable": true
+        },
+        {
+            "name": "Anniversary Cake",
+            "effect": "A massive cake baked to celebrate the second anniversary. It's an event item.",
+            "removable": true
+        },
+        {
+            "name": "Heart Garland",
+            "effect": "A decoration that symbolizes overflowing love. It's an event item.",
             "removable": true
         }
     ],
