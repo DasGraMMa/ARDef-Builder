@@ -279,9 +279,9 @@ class Heroes
     }
 
     /**
-     * Parses a given JSON-string and returns a complete Heroes instance.
+     * Parses the Heroes object based on the given json string.
      * 
-     * @param {String} jsonStr the json-string to parse
+     * @param {String} jsonStr the json string
      */
     static parse(jsonStr)
     {

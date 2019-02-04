@@ -13,9 +13,14 @@ class SkillRestrictor extends HeroData
      */
     constructor() { super(); }
 
+    /**
+     * Parses a SkillRestrictor object based on the given json object.
+     * 
+     * @param {*} jsonObj the json object
+     */
     static parse(jsonObj)
     {
-        // TODO: Find a way to let the HeroData parse this, because it's a duplicate.
+        // TODO: Find a way to use the HeroData.parse-method, because it's a duplicate.
         let toReturn = new SkillRestrictor();
 
         for(let curKey of Object.keys(jsonObj))
@@ -37,6 +42,13 @@ class SkillRestrictor extends HeroData
  */
 class SkillData
 {
+    /**
+     * Creates a new skill with the given name and sp cost. The name has to
+     * be unique in a list of skills.
+     * 
+     * @param {String} name the name of this skill
+     * @param {Number} spCost the sp cost of this skill
+     */
     constructor(name, spCost)
     {
         /** The unique name of the skill. */
@@ -83,6 +95,11 @@ class SkillData
         this.effect = "";
     }
 
+    /**
+     * Parses a SkillData object based on the given json object.
+     * 
+     * @param {*} jsonObj the json object
+     */
     static parse(jsonObj)
     {
         let toReturn = new SkillData();
@@ -101,6 +118,9 @@ class SkillData
     }
 }
 
+/**
+ * Represents the holder of all skills.
+ */
 class SkillHolder
 {
     constructor()
@@ -202,6 +222,11 @@ class Skills
         return this.data;
     }
 
+    /**
+     * Loads the Skill data and returns an instance with the data already filled in.
+     * 
+     * @returns {Skills} an instance of Skills with the whole data filled in
+     */
     static async loadSkillData()
     {
         let skillData = new SkillHolder();
@@ -221,6 +246,9 @@ class Skills
     }
 }
 
+/**
+ * A constant representing an empty skill.
+ */
 Skills.EMPTY = Object.freeze(new SkillData("-", 0));
 
-export { Skills };
+export { SkillRestrictor, SkillData, SkillHolder, Skills };

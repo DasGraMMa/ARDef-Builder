@@ -1,5 +1,8 @@
 import { Gr } from "../GrUtils.js";
 
+/**
+ * Represents a level descriptor for one structure's level.
+ */
 class StructureLevel
 {
     /**
@@ -27,12 +30,20 @@ class StructureLevel
         this.effect = effect;
     }
 
+    /**
+     * Parses a StructureLevel object based on the given json object.
+     * 
+     * @param {*} jsonObj the loaded json object
+     */
     static parse(jsonObj)
     {
         return new StructureLevel(jsonObj.level, jsonObj.cost, jsonObj.effect);
     }
 }
 
+/**
+ * Represents a structure's data.
+ */
 class StructureData
 {
     constructor()
@@ -79,6 +90,11 @@ class StructureData
         this.exclusive = [];
     }
 
+    /**
+     * Parses a StructureData object based on the given json object.
+     * 
+     * @param {*} jsonObj the loaded json object
+     */
     static parse(jsonObj)
     {
         let toReturn = new StructureData();
@@ -95,6 +111,10 @@ class StructureData
     }
 }
 
+/**
+ * Represents the structure holder, holding all the available structures in their
+ * respective categories.
+ */
 class StructureHolder
 {
     constructor()
@@ -135,6 +155,11 @@ class StructureHolder
         this.resources = [];
     }
 
+    /**
+     * Parses the StructureHolder object based on the given json object.
+     * 
+     * @param {*} jsonObj the loaded json object
+     */
     static parse(jsonObj)
     {
         let toReturn = new StructureHolder();
@@ -148,13 +173,24 @@ class StructureHolder
     }
 }
 
+/**
+ * The class representing the structures.
+ */
 class Structures
 {
-    constructor(initialData = {})
+    /**
+     * Creates the structure object with the given initial structure holder.
+     * 
+     * @param {StructureHolder} initialData the initial structure holder
+     */
+    constructor(initialData = new StructureHolder())
     {
         this.data = initialData;
     }
 
+    /**
+     * Loads the structure data and returns a new Structures object with it.
+     */
     static async loadStructureData()
     {
         let loadedStructures = await Gr.ajaxRequest("GET", "/js/data/structures.json");
@@ -163,4 +199,4 @@ class Structures
     }
 }
 
-export { Structures };
+export { Structures, StructureHolder, StructureData, StructureLevel };
