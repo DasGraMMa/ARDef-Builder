@@ -221,6 +221,6 @@ class Skills
     }
 }
 
-Skills.EMPTY = Object.freeze({ name: "-", icon: "", effect: "" });
+Skills.EMPTY = Object.freeze(new SkillData("-", 0));
 
 export { Skills };
