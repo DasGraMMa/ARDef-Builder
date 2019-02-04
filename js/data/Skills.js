@@ -12,6 +12,24 @@ class SkillRestrictor extends HeroData
      * be set.
      */
     constructor() { super(); }
+
+    static parse(jsonObj)
+    {
+        // TODO: Find a way to let the HeroData parse this, because it's a duplicate.
+        let toReturn = new SkillRestrictor();
+
+        for(let curKey of Object.keys(jsonObj))
+        {
+            if(curKey === "skills")
+                toReturn[curKey] = jsonObj[curKey].map(readSkill => HeroSkill.parse(readSkill));
+            else if(curKey === "stats")
+                toReturn[curKey] = HeroStatsCollection.parse(jsonObj[curKey]);
+            else
+                toReturn[curKey] = jsonObj[curKey];
+        }
+
+        return toReturn;
+    }
 }
 
 /**
@@ -63,6 +81,23 @@ class SkillData
          * The effect this skill has. Just a description.
          */
         this.effect = "";
+    }
+
+    static parse(jsonObj)
+    {
+        let toReturn = new SkillData();
+
+        for(let curKey of Object.keys(jsonObj))
+        {
+            if(curKey === "include" || curKey === "exclude")
+                toReturn[curKey] = jsonObj[curKey].map(readRestrictor => SkillRestrictor.parse(readRestrictor));
+            else if(curKey === "stats")
+                toReturn[curKey] = HeroStats.parse(jsonObj[curKey]);
+            else
+                toReturn[curKey] = jsonObj[curKey];
+        }
+
+        return toReturn;
     }
 }
 
@@ -119,12 +154,15 @@ class SkillHolder
  */
 class Skills
 {
-    constructor(initialData = {})
+    /**
+     * Constructs a skills object with the given skill holder as a base.
+     * 
+     * @param {SkillHolder} initialData the initial skill holder
+     */
+    constructor(initialData = new SkillHolder())
     {
         /**
          * The data this Skills object holds.
-         * 
-         * @type {SkillHolder}
          */
         this.data = initialData;
     }
@@ -166,26 +204,20 @@ class Skills
 
     static async loadSkillData()
     {
-        // TODO: Uh, this really isn't optimal. Combine the skill files into one?
-        let loadedWeapon = await Gr.ajaxRequest("GET", "/js/data/skillsWeapon.json");
-        let loadedAssist = await Gr.ajaxRequest("GET", "/js/data/skillsAssist.json");
-        let loadedSpecial = await Gr.ajaxRequest("GET", "/js/data/skillsSpecial.json");
-        let loadedA = await Gr.ajaxRequest("GET", "/js/data/skillsA.json");
-        let loadedB = await Gr.ajaxRequest("GET", "/js/data/skillsB.json");
-        let loadedC = await Gr.ajaxRequest("GET", "/js/data/skillsC.json");
-        let loadedSeal = await Gr.ajaxRequest("GET", "/js/data/skillsSeal.json");
+        let skillData = new SkillHolder();
 
-        let toReturn = new Skills({
-            weapons: JSON.parse(loadedWeapon),
-            assists: JSON.parse(loadedAssist),
-            specials: JSON.parse(loadedSpecial),
-            aSkills: JSON.parse(loadedA),
-            bSkills: JSON.parse(loadedB),
-            cSkills: JSON.parse(loadedC),
-            seals: JSON.parse(loadedSeal)
-        });
+        for(let curSkills of Object.keys(skillData))
+        {
+            let jsonStr = await Gr.ajaxRequest("GET", "/js/data/skills." + curSkills + ".json");
+            let jsonArrObj = JSON.parse(jsonStr);
 
-        return toReturn;
+            for(let curJsonObj of jsonArrObj)
+            {
+                skillData[curSkills].push(SkillData.parse(curJsonObj));
+            }
+        }
+
+        return new Skills(skillData);
     }
 }
 
