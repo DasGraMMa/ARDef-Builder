@@ -22,6 +22,11 @@ class HeroSkill
         this.rarity = rarity;
     }
 
+    /**
+     * Parses a HeroSkill object based on the given json object.
+     * 
+     * @param {*} jsonObj the loaded json object
+     */
     static parse(jsonObj)
     {
         return new HeroSkill(jsonObj.name, jsonObj.rarity);
@@ -52,6 +57,11 @@ class HeroStats
         this.res = res;
     }
 
+    /**
+     * Parses a HeroStats object based on the given json object.
+     * 
+     * @param {*} jsonObj the json object
+     */
     static parse(jsonObj)
     {
         let toReturn = new HeroStats();
@@ -97,6 +107,11 @@ class HeroStatsCollection
         this.level40_4 = null;
     }
 
+    /**
+     * Parses a HeroStats collection object based on the given json object.
+     * 
+     * @param {*} jsonObj the json object
+     */
     static parse(jsonObj)
     {
         let toReturn = new HeroStatsCollection();
@@ -109,17 +124,43 @@ class HeroStatsCollection
         return toReturn;
     }
 
-    getIncreaseForMerge(mergeNum)
+    /**
+     * Returns a HeroStats object with the point increase per stat for the given merges.
+     * 
+     * @param {Number} mergeNum the number of merges to get the increase for
+     * @param {("hp"|"atk"|"spd"|"def"|"res"|"")} flaw which stat corresponds to the flaw, none by default
+     */
+    getIncreaseForMerge(mergeNum, flaw = "")
     {
         let mergeStatBoost = new HeroStats(0, 0, 0, 0, 0);
         let stats = Object.keys(mergeStatBoost);
 
+        // Sort by the weakest stats, because they will increase that way.
         stats.sort((stat1, stat2) => this.level1[stat2] - this.level1[stat1]);
 
+        // And now add the merge stats.
         for(let i = 0; i < mergeNum; i++)
         {
+            // Increase the current two stats.
             mergeStatBoost[stats[(2 * i) % 5]]++;
             mergeStatBoost[stats[(2 * i + 1) % 5]]++;
+
+            // Special handling of first merge since 3.2.
+            if(i == 0)
+            {
+                if(flaw === "")
+                {
+                    // Add another one to the three first stats.
+                    mergeStatBoost[stats[0]]++;
+                    mergeStatBoost[stats[1]]++;
+                    mergeStatBoost[stats[2]]++;
+                }
+                else
+                {
+                    // Add the difference between the neutral and the flaw value.
+                    mergeStatBoost[flaw] += this.level40[flaw][1] - this.level40[flaw][0];
+                }
+            }
         }
 
         return mergeStatBoost;
@@ -182,6 +223,11 @@ class HeroData
         this.ghb = false;
     }
 
+    /**
+     * Parses a HeroData object based on the given json object.
+     * 
+     * @param {*} jsonObj the json object
+     */
     static parse(jsonObj)
     {
         let toReturn = new HeroData();
